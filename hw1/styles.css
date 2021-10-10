@@ -30,33 +30,51 @@
     color: #966C47;
     display: inline-block;
   
-    font-size: 7vh;
-    text-align: left;
+    left: 25vw;
+    font-size: 9vh;
     letter-spacing: 1px;
     padding-top: 1.2vh; 
     padding-left: 3vw;
     
     height: 60%;
   }
-  .button_click{
+  .button_2{
     display: inline-block;
-    font-size: 3vh;
-    border: solid 1px black;
-    margin-right: 5vw;
+    font-size: 2.3vh;
+    border: solid 2px #CDA17A;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    padding-top: 0.5vh;
+    height: 4vh;
+    color: #7F542E;
+  }
+  .button_2:hover{
+    background-color: #CDA17A;
   }
   .top_button{
     position: sticky;
   }
+  .pos_1{
+    left: 66vw; 
+  }
+  .pos_2{
+    left: 78vw;
+  }
+  .pos_3{
+    left: 88vw;
+  }
+  .pos_4{
+    left: 76vw;
+  }
   .down_button{
     position: sticky;
-    top: 94%;
-    align-items: right;
+    top: 92%;
   }
   .navigation{
     height: 40%;
     left: 2%;
   }
-  .button{
+  .button_1{
     display: inline-block;
     height: 100%;
     
@@ -72,7 +90,7 @@
     
     border-bottom: solid 0.7vh #CDA17A;
   }
-  .button:hover{
+  .button_1:hover{
     background-color: #CDA17A;
   }
   .bottom{
@@ -82,7 +100,7 @@
   }
   .bottom_left{
     display: inline-block;
-    height: 99vh;
+    height: 130vh;
     width: 55%;
     left: 2%;
     top: 1vh;
@@ -112,7 +130,7 @@
     opacity: 1;
   }
   .picture:hover{
-    transform: scale(1.1) rotateX(-10deg);
+    transform: scale(1.15) rotateX(-10deg);
     transition: 0.3s;
     box-shadow: 0 10px 80px rgba(#3B4453, 0.3);
     opacity: 0.5;
@@ -126,7 +144,7 @@
     height: 68vh;
     width: 80%;
     
-    top: 22%;
+    top: 20%;
     border: solid 1px #966C47;
     box-shadow: 5px 10px 8px 10px #888888;
   }
@@ -145,5 +163,20 @@
       width: 90%;
       left: 5%;
       top: 4%;
+  }
+  .album_name{
+    font-family:Brush Script MT;
+    font-size: 10vh;
+    color: #5A432E;
+    text-align: center;
+    top: 4vh;
+  }
+  .number{
+    font-family:Brush Script MT;
+    font-size: 3.5vh;
+    color: #5A432E;
+    text-align: right;
+    padding-right: 3vw;
+    top: 2.5vh;
   }
   

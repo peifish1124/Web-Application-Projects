@@ -6,80 +6,108 @@
     box-sizing: border-box;
   }
   html,body{
-    width: 100%;
-    /* width: 100%; height: 100%; 上下補滿 */
+    width: 100vw;
     padding: 0px; margin: 0px; /*無邊框*/ 
   }
   body{
     overflow-x: hidden; 
+    background-color: #F6E8DB;
   }
   .top{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
     display: block;
   
     background: radial-gradient(#B0CCE5, #DBE9F6);
-    height: 15%;
+    height: 15vh;
     border-style: none none solid none;
     border-width: 2px;
     border-color: #966C47;
   }
   .title{
     color: #966C47;
+    display: inline-block;
   
-    font-size: 50px;
+    font-size: 7vh;
     text-align: left;
     letter-spacing: 1px;
-    padding-top: 20px;
-    padding-left: 25px;
+    padding-top: 1.2vh; 
+    padding-left: 3vw;
     
     height: 60%;
   }
+  .button_click{
+    display: inline-block;
+    font-size: 3vh;
+    border: solid 1px black;
+    margin-right: 5vw;
+  }
+  .top_button{
+    position: sticky;
+  }
+  .down_button{
+    position: sticky;
+    top: 94%;
+    align-items: right;
+  }
   .navigation{
     height: 40%;
-    left: 15px;
+    left: 2%;
   }
   .button{
     display: inline-block;
+    height: 100%;
     
     font-weight: bold;
-    font-size: 23px;
+    font-size: 3vh;
     color: #7F542E;
+
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
+    padding-top: 0.8%;
     
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 4px;
+    margin-left: 1%;
     
-    margin-left: 10px;
-    
-    border-bottom: solid 5px #CDA17A;
+    border-bottom: solid 0.7vh #CDA17A;
   }
   .button:hover{
     background-color: #CDA17A;
   }
   .bottom{
-    height: 85%;
+    z-index: 1;
+    height: 130vh;
     background-color: #F6E8DB;
   }
   .bottom_left{
     display: inline-block;
-    height: 100%;
+    height: 99vh;
     width: 55%;
-    left: 10px;
+    left: 2%;
+    top: 1vh;
   }
   .bottom_right{
     display: inline-block;
-    height: 755px;
+    height: 100%;
     width: 44%;
-    left: 20px;
+    top: 1.7%;
   }
   .picture_set{
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
   } 
   .picture{
-  /*   border: solid 2px black; */
-    width: 20%;
-    height: 20%;
-    padding: 10px;
+    display: inline-block;
+
+    width: 220px;
+    height: 170px;
+    /* width: 33%;
+    height: 23%; */
+    padding: 1.2%;
     overflow: hidden;
     opacity: 1;
   }
@@ -92,11 +120,13 @@
   }
   .preview{
     display: inline-block;
+    position: sticky;
+
     background-color: #F6E8DB;
-    height: 500px;
-    width: 500px;
-    top: 150px;
-    left: 50px;
+    height: 68vh;
+    width: 80%;
+    
+    top: 22%;
     border: solid 1px #966C47;
     box-shadow: 5px 10px 8px 10px #888888;
   }

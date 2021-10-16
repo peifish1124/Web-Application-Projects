@@ -48,35 +48,26 @@
     border-style: none solid solid solid;
     padding-right: 1vw;
     padding-left: 1vw;
-    padding-top: 2vh;
-    padding-bottom: 5vh;
+    padding-top: 1vh;
+    padding-bottom: 3vh;
     height: 4vh;
     color: #7F542E;
   }
   .about:hover{
     background-color: #CDA17A;
   }
-  /* 
-  
-  .top_button{
-    position: sticky;
+  .button_2{
+    position: fixed;
+    display: inline-block;
+    border: solid 3px #CDA17A;
+    top: 94%;
+    font-size: 2.3vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
   }
-  .pos_1{
-    left: 66vw; 
+  .button_2:hover{
+    background-color: #CDA17A;
   }
-  .pos_2{
-    left: 78vw;
-  }
-  .pos_3{
-    left: 88vw;
-  }
-  .pos_4{
-    left: 76vw;
-  }
-  .down_button{
-    position: sticky;
-    top: 92%;
-  } */
   .navigation{
     height: 40%;
   }
@@ -184,6 +175,11 @@
     padding-right: 3vw;
     top: 2.5vh;
   }
+  @media(max-width: 900px){
+      .about{
+          left: 30vw;
+      }
+  }
   @media(max-width: 810px) {
     .bottom_left{
         display: block;
@@ -198,6 +194,20 @@
     .preview{
         position: relative;
         width: 100%;
+    }
+    .button_2{
+        position: relative;
+        left: 50vw;
+        top: 0vh;
+    }
+  }
+  @media(max-width: 670px){
+      .title{
+          left: 0;
+          top: 0;
+      }
+      .about{
+        left: 10vw;
     }
   }
   .chosen{

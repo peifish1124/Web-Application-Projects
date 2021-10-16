@@ -15,11 +15,12 @@
 <body>
   <div class="top">
     <div class="title">photo album</div>
-    <div class="about">ABOUT</div>
-    <div class="navigation">
-        <div class="button_1" id = "dog" onclick="chooseAlbum()">dog</div>
-        <div class="button_1" id = "food" onclick="chooseAlbum()">food</div>
-        <div class="button_1" id = "empty" onclick="chooseAlbum()">empty</div>
+    <div class="about" onclick="addAlbum()">album+</div>
+    <div class="about" onclick="about()">about</div>
+    <div class="navigation" id="nav">
+        <div class="button_1" id = "dog" onclick="chooseAlbum()" oncontextmenu="deleteAlbum()">dog</div>
+        <div class="button_1" id = "food" onclick="chooseAlbum()" oncontextmenu="deleteAlbum()">food</div>
+        <div class="button_1" id = "empty" onclick="chooseAlbum()" oncontextmenu="deleteAlbum()">empty</div>
     </div>
   </div>
   <div class="bottom" id="bottom">
@@ -31,63 +32,10 @@
           <div class="album_name" id="name"></div>
           <div class="number" id="num"></div>
       </div> 
+      <div class="button_2" onclick="addPhoto()">photo+</div>
   </div>
   <div class="bottom_right">
     <div class="picture_set" id="picSet">
-      <div class="picture" onclick="choosePic()">
-        <img id="1" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="2" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="3" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="4" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="5" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="6" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="7" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="8" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="9" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="10" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="11" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="12" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="13" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="14" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="15" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="16" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="17" src="" alt="" height="100%" width="100%"></img>
-      </div>
-      <div class="picture" onclick="choosePic()">
-        <img id="18" src="" alt="" height="100%" width="100%"></img>
-      </div>
     </div>
 </div>
 </div>

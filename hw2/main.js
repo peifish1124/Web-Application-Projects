@@ -35,52 +35,60 @@ var food_images = [
     "https://images.pexels.com/photos/3758133/pexels-photo-3758133.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     "https://images.pexels.com/photos/628776/pexels-photo-628776.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     "https://images.pexels.com/photos/2103949/pexels-photo-2103949.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    "https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-    "https://images.pexels.com/photos/3625373/pexels-photo-3625373.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+    "https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+    //"https://images.pexels.com/photos/3625373/pexels-photo-3625373.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
 ]
-var pair = {dog:dog_images,food:food_images};
+var pair = {dog:dog_images,food:food_images,empty:[]};
 
 var displayImg = document.getElementById("display");
 var picSet = document.getElementById("picSet");
-var picAmount = picSet.getElementsByTagName("div").length;
 var number = document.getElementById("num");
 var albumName = document.getElementById("name");
-var preDisplayId = "1";
-var preAlbumId = "dog";
 var bottom = document.getElementById("bottom");
 
+var preDisplayId = "1";
+var preAlbumId = "dog";
+
 function createTable(array){
-      var cnt = 0;
+      var allDivNode = [];
       for (let i = 0; i < array.length; i++) {
-        if(array[i] != ""){
-            cnt++;
-            let divNode = document.createElement("div");
-            let a = document.createAttribute("class"); a.value = "picture";
-            divNode.setAttributeNode(a);
-            let b = document.createAttribute("onclick"); b.value = "choosePic()";
-            divNode.setAttributeNode(b);
-            picSet.appendChild(divNode);
+        let divNode = document.createElement("div");
+        let a = document.createAttribute("class"); a.value = "picture";
+        divNode.setAttributeNode(a);
+        let b = document.createAttribute("onclick"); b.value = "choosePic()";
+        divNode.setAttributeNode(b);
+        let h = document.createAttribute("oncontextmenu"); h.value = "deletePic()";
+        divNode.setAttributeNode(h);
            
-            let imgNode = document.createElement("img");
-            let c = document.createAttribute("id"); c.value = cnt; imgNode.setAttributeNode(c);
-            let d = document.createAttribute("src"); d.value = ""; imgNode.setAttributeNode(d);
-            let e = document.createAttribute("alt"); e.value = ""; imgNode.setAttributeNode(e);
-            let f = document.createAttribute("height"); f.value = "100%"; imgNode.setAttributeNode(f);
-            let g = document.createAttribute("width"); g.value = "100%"; imgNode.setAttributeNode(g);
-            divNode.appendChild(imgNode);
-        }
+        let imgNode = document.createElement("img");
+        let c = document.createAttribute("id"); c.value = i+1; imgNode.setAttributeNode(c);
+        let d = document.createAttribute("src"); d.value = ""; imgNode.setAttributeNode(d);
+        let e = document.createAttribute("alt"); e.value = ""; imgNode.setAttributeNode(e);
+        let f = document.createAttribute("height"); f.value = "100%"; imgNode.setAttributeNode(f);
+        let g = document.createAttribute("width"); g.value = "100%"; imgNode.setAttributeNode(g);
+        divNode.appendChild(imgNode);
+        allDivNode[i] = divNode;
       }
+      return allDivNode;
   }
 
 // defualt
-//createTable(dog_images);
+var allDivNode = createTable(dog_images);
+for(let i = 0; i < dog_images.length; i++){
+    picSet.appendChild(allDivNode[i]);
+}
+
 displayImg.src = dog_images[0];
+
+var picAmount = dog_images.length;
 number.textContent = `1 / ${picAmount}`;
 albumName.textContent = "Dog";
+
 var picImg = document.getElementById("1");
 picImg.classList.add("chosen");
 var chosenAlb = document.getElementById("dog");
 chosenAlb.classList.add("target");
+
 for(var i = 1; i <= picAmount; i++){
     let pic = document.getElementById(`${i}`);
     pic.src = dog_images[i-1];
@@ -103,26 +111,106 @@ function choosePic(){
 
 function chooseAlbum(){
     //選取唯一性
-    let prechosenAlb = document.getElementById(preAlbumId);
-    prechosenAlb.classList.remove("target");
-    if(preAlbumId == "empty") bottom.classList.remove("empty");
-    preAlbumId = event.target.id;
-    //定位
-    chosenAlb = document.getElementById(event.target.id);
-    //change css when chosen
-    chosenAlb.classList.add("target");
-    //load picture
-    if(preAlbumId != "empty"){
-        //createTable(pair[preAlbumId]);
+        let prechosenAlb = document.getElementById(preAlbumId);
+        if(prechosenAlb!=null)prechosenAlb.classList.remove("target");
+       
+        while (picSet.lastElementChild) {
+            picSet.removeChild(picSet.lastElementChild);
+        }
+        preAlbumId = event.target.id;
+        //定位
+        chosenAlb = document.getElementById(event.target.id);
+        //change css when chosen
+        chosenAlb.classList.add("target");
+        //load picture
+        
+            //create table
+            var allDivNode = createTable(pair[preAlbumId]);
+            for(let i = 0; i < pair[preAlbumId].length; i++){
+                picSet.appendChild(allDivNode[i]);
+            }
 
-        for(var i = 1; i <= picAmount; i++){
+            for(var i = 1; i <= pair[preAlbumId].length; i++){
+                let pic = document.getElementById(`${i}`);
+                pic.src = pair[preAlbumId][i-1];
+            }
+
+            //pic amount
+            picAmount = pair[preAlbumId].length;
+            if(picAmount == 0) {
+                alert("This album is empty.");
+                displayImg.src = "";
+                number.textContent = `0 / ${picAmount}`;
+            } else{
+                //default(預設為第一格且刪掉另一相簿的最後選取)
+                displayImg.src = pair[preAlbumId][0];
+                number.textContent = `1 / ${picAmount}`;
+                picImg = document.getElementById("1");
+                picImg.classList.add("chosen");
+                if(preDisplayId != "1"){
+                    let prePicImg = document.getElementById(preDisplayId);
+                    prePicImg.classList.remove("chosen");
+                    preDisplayId = "1";
+                }
+            }
+            albumName.textContent = `${preAlbumId}`[0].toUpperCase() +  `${preAlbumId}`.slice(1);  
+}
+
+function addPhoto(){
+    let albumName = document.getElementsByClassName("target")[0].textContent;
+    var addUrl = prompt("請輸入想加入的照片URL","URL");
+    if (addUrl != null){ 
+            alert("已加入照片：" + addUrl);
+            let len = pair[albumName].length;
+            if(len == 0) displayImg.src = addUrl;
+            pair[albumName][len] = addUrl;
+            while (picSet.lastElementChild) {
+                picSet.removeChild(picSet.lastElementChild);
+            }
+            allDivNode = createTable(pair[albumName]);
+            for(let i = 0; i < pair[albumName].length; i++){
+                picSet.appendChild(allDivNode[i]);
+            }
+            for(var i = 1; i <= pair[preAlbumId].length; i++){
+                let pic = document.getElementById(`${i}`);
+                pic.src = pair[preAlbumId][i-1];
+            }
+            //pic amount
+            picAmount = pair[preAlbumId].length;
+
+            //default(預設為第一格且刪掉另一相簿的最後選取)
+            number.textContent = `1 / ${picAmount}`;
+            picImg = document.getElementById("1");
+            picImg.classList.add("chosen");
+            if(preDisplayId != "1"){
+                let prePicImg = document.getElementById(preDisplayId);
+                prePicImg.classList.remove("chosen");
+                preDisplayId = "1";
+            }
+    }else{
+        alert("您取消此動作！");
+    }
+}
+
+function deletePic(){
+    let albumName = document.getElementsByClassName("target")[0].textContent;
+    let del = confirm('您確定要刪除此照片嗎？');
+    if (del) {
+        alert('已刪除此照片！');
+        pair[albumName].splice(event.target.id-1, 1);
+        while (picSet.lastElementChild) {
+            picSet.removeChild(picSet.lastElementChild);
+        }
+        allDivNode = createTable(pair[albumName]);
+        for(let i = 0; i < pair[albumName].length; i++){
+            picSet.appendChild(allDivNode[i]);
+        }
+        for(var i = 1; i <= pair[preAlbumId].length; i++){
             let pic = document.getElementById(`${i}`);
             pic.src = pair[preAlbumId][i-1];
         }
-
         //pic amount
-        picAmount = picSet.getElementsByTagName("div").length;
-        albumName.textContent = `${preAlbumId}`[0].toUpperCase() +  `${preAlbumId}`.slice(1);
+        picAmount = pair[preAlbumId].length;
 
         //default(預設為第一格且刪掉另一相簿的最後選取)
         displayImg.src = pair[preAlbumId][0];
@@ -135,8 +223,63 @@ function chooseAlbum(){
             preDisplayId = "1";
         }
     } else {
-        bottom.classList.add("empty");
-        alert("This album is empty.");
+        alert('您取消此動作！');
     }
-    
+}
+
+function about(){
+    var alb = [];
+    var totalCnt = 0;
+    var output = "相簿相關資訊\n";
+    var nav = document.getElementById("nav");
+    var amount = nav.getElementsByTagName("div").length;
+    for(let i = 0; i < amount; i++){
+        alb[i] = nav.getElementsByTagName("div")[i].textContent;
+    }
+    for(let i = 0; i < alb.length; i++){
+        output += (alb[i] + " : " + pair[alb[i]].length + " 張照片\n");
+        totalCnt += pair[alb[i]].length;
+    }
+    output += ("total: "+totalCnt+" 張照片");
+    alert(output);
+}
+
+function addAlbum(){
+    var addAlb = prompt("請輸入想加入的相簿名稱","name");
+    if (addAlb != null){ 
+        alert("已加入相簿： " + addAlb);
+        var nav = document.getElementById("nav");
+        let divNode = document.createElement("div");
+        let a = document.createAttribute("class"); a.value = "button_1";
+        divNode.setAttributeNode(a);
+        let b = document.createAttribute("id"); b.value = addAlb;
+        divNode.setAttributeNode(b);
+        let c = document.createAttribute("onclick"); c.value = "chooseAlbum()";
+        divNode.setAttributeNode(c);
+        let d = document.createAttribute("oncontextmenu"); d.value = "deleteAlbum()";
+        divNode.setAttributeNode(d);
+        divNode.textContent = addAlb;
+        nav.appendChild(divNode);
+        pair[addAlb] = [];
+    }else{
+        alert("您取消此動作！"); 
+    }
+}
+
+function deleteAlbum(){
+    let del = confirm('您確定要刪除此相簿嗎？');
+    if (del) {
+        alert('已刪除此相簿！');
+        let remo = document.getElementById(event.target.id);
+        let nav = document.getElementById("nav");
+        nav.removeChild(remo);
+        while (picSet.lastElementChild) {
+            picSet.removeChild(picSet.lastElementChild);
+        }
+        displayImg.src = "";
+        number.textContent = "";
+        albumName.textContent = "";
+    } else {
+        alert('您取消此動作！');
+    }
 }

@@ -10,7 +10,7 @@
     padding: 0px; margin: 0px; /*無邊框*/ 
   }
   body{
-    overflow-x: hidden; 
+    /* overflow-x: hidden;  */
     background-color: #F6E8DB;
   }
   .top{
@@ -210,6 +210,24 @@
         left: 10vw;
     }
   }
+  @media(max-width: 600px){
+    .title{
+        left: 0;
+        top: 0;
+        font-size: 6vh;
+    }
+    .about{
+      left: 8vw;
+  }
+}
+@media(max-height: 300px){
+  .about{
+    padding-top: 0vh;
+    padding-bottom: 4vh;
+    border: solid 3px #CDA17A;
+    border-style: none solid solid solid;
+  }
+}
   .chosen{
     border: solid 10px #F9A65C;
   }

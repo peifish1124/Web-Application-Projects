@@ -2,6 +2,7 @@ var todo_all = [];
 var todo_active = [];
 var todo_completed = [];
 var index = 0;
+var mode = "all";
 
 var input = document.getElementById("todo-input");
 var list = document.getElementById("todo-list");
@@ -21,7 +22,7 @@ function createItem(itemName){
     liNode.setAttribute("class","todo-app__item");
 
     let leftNode = document.createElement("div");
-    leftNode.setAttribute("class","todo-app__checkbox")
+    leftNode.setAttribute("class","todo-app__checkbox");
     let leftLeftNode = document.createElement("input");
     leftLeftNode.setAttribute("id",index);
     leftLeftNode.setAttribute("type","checkbox");
@@ -72,7 +73,7 @@ input.addEventListener("keyup", e => {
 });
 
 list.addEventListener("click", e => {
-    console.log("hi");
+    
     var clickItem = document.getElementById(e.target.id);
     try{
         var itemParent = clickItem.parentNode.parentNode;
@@ -105,6 +106,13 @@ list.addEventListener("click", e => {
         } else{
             clear.style.color = "white";
             clear.style.background = "white";   
+        }
+        if(mode == "all"){
+            allItem();
+        } else if(mode == "active"){
+            activeItem();
+        } else{
+            completedItem();
         }
     } catch(e){
         //do nothing
@@ -150,7 +158,8 @@ function allItem(){
             list.appendChild(liNode);
             index++;
         }
-    }     
+    }  
+    mode = "all";   
 }
 
 function activeItem(){
@@ -163,7 +172,8 @@ function activeItem(){
             list.appendChild(liNode);
             index++;
         }
-    }  
+    } 
+    mode = "active";  
 }
 
 function completedItem(){
@@ -183,6 +193,7 @@ function completedItem(){
             index++;
         }
     }
+    mode = "completed"; 
 }
 
 function clearItem(){
@@ -196,6 +207,19 @@ function clearItem(){
         } else {
             i++;
         }
+    }
+    if(mode == "all"){
+        allItem();
+    } else if(mode == "active"){
+        activeItem();
+    } else{
+        completedItem();
+    }
+
+    if(countLeft(todo_all) >= 1){
+        footer.style.display = "flex";
+    } else {
+        footer.style.display = "none";
     }
 }
 

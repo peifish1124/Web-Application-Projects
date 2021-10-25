@@ -70,6 +70,13 @@ input.addEventListener("keyup", e => {
     } else {
         footer.style.display = "none";
     }
+    if(mode == "all"){
+        allItem();
+    } else if(mode == "active"){
+        activeItem();
+    } else{
+        completedItem();
+    }
 });
 
 list.addEventListener("click", e => {
@@ -135,6 +142,12 @@ function removeItem(){
         footer.style.display = "flex";
     } else {
         footer.style.display = "none";
+    }
+    if(countLeft(todo_completed) != 0){
+        clear.removeAttribute("style");
+    } else{
+        clear.style.color = "white";
+        clear.style.background = "white";   
     }
 }
 
@@ -220,6 +233,13 @@ function clearItem(){
         footer.style.display = "flex";
     } else {
         footer.style.display = "none";
+    }
+
+    if(countLeft(todo_completed) != 0){
+        clear.removeAttribute("style");
+    } else{
+        clear.style.color = "white";
+        clear.style.background = "white";   
     }
 }
 

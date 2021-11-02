@@ -32,9 +32,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     const freshBoard = () => {
         {/* -- TODO 3-1 -- */}
         {/* Useful Hint: createBoard(...) */}
-        <createBoard boardSize={boardSize} mineNum={mineNum}/>
-        console.log(createBoard(2,3));
-        
+        //<createBoard boardSize={boardSize} mineNum={mineNum}/>;
+        //createBoard(2,3).board;
+        //setBoard(createBoard(boardSize,mineNum).board); 
     }
 
     const restartGame = () => {
@@ -62,13 +62,32 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         {/* Reminder: Also remember to handle the condition that after you reveal this cell then you win the game. */}
         
     };
-
+    
     return(
         <div className = 'boardPage' >
             <div className = 'boardWrapper' >
             {/* <h1>This is the board Page!</h1>  This line of code is just for testing. Please delete it if you finish this function. */}
             <div className="boardContainer">
-                <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver}/>
+                {win?<Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver}/>:
+                <Modal></Modal>}
+                {/* <div id="row0" style={{display:'flex'}}></div>
+                {
+                    <Cell rowIdx={row} colIdx={col}></Cell>
+                }
+                <div id="row1" style={{display:'flex'}}></div>
+                <div id="row2" style={{display:'flex'}}></div>
+                <div id="row3" style={{display:'flex'}}></div>
+                <div id="row4" style={{display:'flex'}}></div>
+                <div id="row5" style={{display:'flex'}}></div>
+                <div id="row6" style={{display:'flex'}}></div>
+                <div id="row7" style={{display:'flex'}}></div> */}
+                {/* <Cell rowIdx={row} colIdx={col}></Cell> */}
+                {/* <div id="row0" style={{display:'flex'}}></div>
+                {board.map( i => {
+                    return(
+                        <Cell rowIdx={6} colIdx={6}></Cell>
+                    );
+                })} */}
 
             </div>
             {/* -- TODO 3-1 -- */}

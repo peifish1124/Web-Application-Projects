@@ -31,7 +31,7 @@ const MineSweeper = () => {
     }
     {/* -- TODO 5-2 -- */}
     const backToHomeOnClick = () => {
-        
+        setStartGame(false);
     }
 
     return( 

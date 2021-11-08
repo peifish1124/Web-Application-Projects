@@ -11,18 +11,19 @@
     padding: 0;
 }
 .top_screen{
-    /* border: solid 1px red; */
     height: 30vh;
 }
 .input{
     height: 30vh;
     width: 60vw;
     margin-left: 20vw;
-    font-size: 80px;
+    font-size: 60px;
     border: solid 1px #256399;
     text-align: right;
-    padding-top: 7vh;
+    padding-top: 9vh;
     padding-right: 3vw;
+    overflow:hidden;
+    text-overflow:clip;
 }
 .buttom_button{
     height: 48vh;
@@ -40,4 +41,20 @@
     height: 9vh;
     width: 5vw;
     font-size: 25px;
+}
+.line_4{
+    text-align: right;
+    padding-right: 3.5vw;
+    display: flex;
+    flex-direction: row;
+}
+.left{
+    border: solid 1px #7CAEDB;
+    padding-left: 2vw;
+    padding-top: 1.2vh;
+    margin-top: 2vh;
+    margin-left: 3vw;
+    text-align: left;
+    width: 13vw;
+    font-size: 30px;
 }

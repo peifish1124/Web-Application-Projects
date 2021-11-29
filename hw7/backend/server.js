@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import scoreRoute from './src/routes/index';
+import scoreRoute from './src/routes/index.js';
 import mongoose from 'mongoose';
 import dotenv from "dotenv-defaults"; 
 dotenv.config();

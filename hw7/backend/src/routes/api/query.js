@@ -1,4 +1,4 @@
-import ScoreCard from "../../models/ScoreCard";
+import ScoreCard from "../../models/ScoreCard.js";
 
 const query = async (type, queryString) => {
     var nameExisting, subExisting;

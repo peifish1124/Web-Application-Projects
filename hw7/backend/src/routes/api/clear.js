@@ -1,4 +1,4 @@
-import ScoreCard from "../../models/ScoreCard";
+import ScoreCard from "../../models/ScoreCard.js";
 
 const clear = async () => { 
     try {

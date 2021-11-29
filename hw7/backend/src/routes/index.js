@@ -1,7 +1,7 @@
 import express from 'express';
-import add from './api/add';
-import clear from './api/clear';
-import query from './api/query';
+import add from './api/add.js';
+import clear from './api/clear.js';
+import query from './api/query.js';
 
 const router = express.Router();
 

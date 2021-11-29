@@ -1,4 +1,4 @@
-import ScoreCard from "../../models/ScoreCard";
+import ScoreCard from "../../models/ScoreCard.js";
 
 const add = async (name, subject, score) => {
     const existing = await ScoreCard.findOne({ name: name, subject: subject }); 

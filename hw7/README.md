@@ -1,4 +1,5 @@
 # wp1101
+- basic requirement完成
 - 前置作業
   - cd frontend
   - yarn install

@@ -7,7 +7,7 @@ const router = express.Router()
 // TODO 2-(1): create the 1st API (/api/allPosts)
 router.get('/allPosts', async (req, res) => { 
     try {
-        const existing = await Post.find({}).sort('timestamp');
+        const existing = await Post.find({}).sort([['timestamp', -1]]);
         if(existing.length === 0){
             res.status(403).send({ message: 'error',data: null });
         } else {

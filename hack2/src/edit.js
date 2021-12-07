@@ -15,18 +15,27 @@ function Edit(props) {
     setContent(content.trim());
     var postId = uuidv4();
     var timestamp = Date.now();
-    const {
-      data: { message },
-    } = await instance.post('/newPost', {
-      postId,
-      title,
-      content,
-      timestamp
-    });
-    
-    setTimeout(() => {
-      props.navigate(-1);
-    }, 300)
+    console.log(title);
+    try{
+      if(title != null && content != null){
+        const {
+          data: { message },
+        } = await instance.post('/newPost', {
+          postId,
+          title,
+          content,
+          timestamp
+        });
+      } else {
+        console.log("title or content is null");
+      }
+      
+      setTimeout(() => {
+        props.navigate(-1);
+      }, 300)
+    } catch(e){
+      console.log("error");
+    }
   }
 
   const inputTitle = (e) => {

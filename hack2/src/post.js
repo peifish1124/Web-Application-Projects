@@ -12,18 +12,26 @@ function Post(props) {
 
   // TODO 3-(2): complete getPostDetail function to get the full information of a post from database
   const getPostDetail = async () => {
-    const { data: { message, post }} = await instance.get('/postDetail', { params : { pid }});
-    if(message == 'success') {
-      setData(post);
+    try{
+      const { data: { message, post }} = await instance.get('/postDetail', { params : { pid }});
+      if(message == 'success') {
+        setData(post);
+      }
+    } catch(e) {
+      console.log("error");
     }
   }
 
   // TODO 5-(2): complete delPost function to delete a post from database
   const delPost = async () => {
-    const { data: { message }} = await instance.delete('/post', { params : { pid }});
-    setTimeout(() => {
-      props.navigate(-1)
-    }, 300)
+    try{
+      const { data: { message }} = await instance.delete('/post', { params : { pid }});
+      setTimeout(() => {
+        props.navigate(-1)
+      }, 300)
+    } catch(e){
+      console.log("error");
+    }
   }
 
   // TODO 3-(2): fetch the full information of a post from database

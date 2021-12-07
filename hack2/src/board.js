@@ -9,9 +9,13 @@ function Board(props) {
   
   // TODO 2-(2): fetch all posts from database
   useEffect( async () => {
-    const { data: { message, data }} = await instance.get('/allPosts');
-    if(message == 'success') {
-      setPosts(data);
+    try{
+      const { data: { message, data }} = await instance.get('/allPosts');
+      if(message == 'success') {
+        setPosts(data);
+      }
+    } catch(e) {
+      console.log("error");
     }
   }, [])
   

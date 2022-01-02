@@ -7,18 +7,18 @@ const LoginPage = ({ setUsername, setStartChat }) => {
         <>
             <section className="input-form">
                 <div className="App-title">
-                    <h1>Login Page</h1>
+                    <h1>My Chat Room</h1>
                 </div>
 
                 <Input
                     size="large"
-                    placeholder="Please Enter Your Name..."
+                    placeholder="Enter Your Name"
                     onChange={(e) => {
                         setUsername(e.target.value);
                     }}
                 />
                 <Button type="primary" onClick={() => setStartChat(true)}>
-                    Start Chat
+                    Sign In
                 </Button>
             </section>
         </>

@@ -31,18 +31,11 @@
   display: block;
 }
 
-/* .App-message-get {
-} */
-
 .App-message-sent {
   display: flex;
   flex-direction: row-reverse;
-  /* justify-content: flex-end; */
 }
 
 .App-message-sent > .ant-tag {
   margin-left: 8px !important;
 }
-/* p {
-  display: inline; 
-} */

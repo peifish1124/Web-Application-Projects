@@ -4,7 +4,6 @@ const Query = {
         const data = await Message.find({
             $or: [{ from: args.from }, { to: args.to }],
         }).sort({ _id: 1 });
-        // console.log(data);
         return data;
     },
 };

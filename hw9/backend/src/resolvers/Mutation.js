@@ -26,14 +26,14 @@ const Mutation = {
             Messages: {
                 mutation: "CLEARED",
                 data: {
-                    from: "name field cleared",
+                    from: "from field cleared",
                     to: "to field cleared",
                     body: "body field cleared",
                 },
             },
         });
         return {
-            from: "name field cleared",
+            from: "from field cleared",
             to: "to field cleared",
             body: "body field cleared",
         };

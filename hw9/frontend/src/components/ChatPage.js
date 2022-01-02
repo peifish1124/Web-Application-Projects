@@ -45,7 +45,7 @@ const ChatPage = ({ sendMessage, clearMessages, username, displayStatus }) => {
                     Clear
                 </Button>
             </div>
-            <h2>{`Welcome, ${username}`}</h2>
+            <h2>{`Hello, ${username}`}</h2>
             <div className="App-messages">
                 {loading ? (
                     <p style={{ color: "#ccc" }}>Loading...</p>
@@ -78,7 +78,6 @@ const ChatPage = ({ sendMessage, clearMessages, username, displayStatus }) => {
                 }}
             ></Input>
             <Input.Search
-                // rows={4}
                 value={body}
                 ref={bodyRef}
                 enterButton="Send"

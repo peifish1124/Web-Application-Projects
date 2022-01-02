@@ -1,14 +1,16 @@
 import "./App.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useChat from "./hooks/useChat";
 import { message } from "antd";
 import ChatPage from "./components/ChatPage";
 import LoginPage from "./components/LoginPage";
 
+const LOCALSTORAGE_KEY = "save-me"; 
 function App() {
+    const savedMe = localStorage.getItem(LOCALSTORAGE_KEY);
     const { status, messages, sendMessage, clearMessages } = useChat();
     const [startChat, setStartChat] = useState(false);
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(savedMe || '');
 
     const displayStatus = (s) => {
         if (s.msg) {
@@ -25,7 +27,6 @@ function App() {
                 case "info":
                     message.info(content);
                     break;
-                case "danger":
                 default:
                     message.error(content);
                     break;
@@ -36,6 +37,12 @@ function App() {
     useEffect(() => {
         displayStatus(status);
     }, [status]);
+
+    useEffect(() => { 
+        if (startChat) {
+          localStorage.setItem(LOCALSTORAGE_KEY, username);
+        }
+      }, [startChat, username]);
 
     return startChat ? (
         <div className="App">

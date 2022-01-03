@@ -39,3 +39,27 @@
 .App-message-sent > .ant-tag {
   margin-left: 8px !important;
 }
+
+section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  height: 80vh;
+  padding: 10px;
+  width: 400px;
+}
+
+.App-title {
+  margin-bottom: 20px;
+}
+
+.ant-input {
+  margin-top: 20px;
+}
+
+.ant-btn {
+  margin: 10px;
+}
+

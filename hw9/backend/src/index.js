@@ -10,8 +10,6 @@ mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true
 })
 
-const db = mongoose.connection
-
 const pubsub = new PubSub()
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
@@ -26,6 +24,7 @@ const server = new GraphQLServer({
   }
 })
 
+const db = mongoose.connection
 
 db.once('open', () => {
   console.log('MongoDB connected!')

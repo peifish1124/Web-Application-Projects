@@ -1,4 +1,4 @@
-import Message from "./../models/message";
+import Message from "../db";
 const Query = {
     async Messages(parent, args, _) {
         const data = await Message.find({

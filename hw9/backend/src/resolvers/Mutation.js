@@ -1,10 +1,10 @@
-import Message from "./../models/message";
+import Message from "../db";
 const Mutation = {
     async CreateMessage(parent, args, { db, pubsub }, info) {
-        const tmp = {
+        const temp = {
             ...args.data,
         };
-        const msg = new Message(tmp);
+        const msg = new Message(temp);
         await msg.save();
         pubsub.publish("Messages", {
             Messages: {

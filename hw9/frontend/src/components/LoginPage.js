@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Input } from "antd";
-import "./LoginPage.css";
 
 const LoginPage = ({ setUsername, setStartChat }) => {
     return (
